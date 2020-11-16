@@ -21,8 +21,8 @@ namespace ScreamAPI.Models
         [Column("arq_imagem")]
         public string ArquivoImagem { get; set; }
 
-        [Column("dt_imagem")]
-        DateTime? dataCriacaoImagem { get; set; }
+        [Column("ex_imagem")]
+        public bool ExclusaoImagem { get; set; }
 
     }
 }

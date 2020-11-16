@@ -24,7 +24,7 @@ namespace ScreamAPI.Controllers
         [HttpGet("GetImagens")]
         public async Task<ActionResult<IEnumerable<Imagem>>> GetImagens()
         {
-            return await _context.Imagens.ToListAsync();
+            return await _context.Imagens.Where(i => i.ExclusaoImagem == false).ToListAsync();
         }
 
         // GET: api/Imagems/5
@@ -42,8 +42,6 @@ namespace ScreamAPI.Controllers
         }
 
         // PUT: api/Imagems/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("PutImagem/{id}")]
         public async Task<IActionResult> PutImagem(int id, Imagem imagem)
         {
@@ -73,12 +71,6 @@ namespace ScreamAPI.Controllers
             return NoContent();
         }
 
-       /*[HttpPost]
-        public async Task<Action<Imagem>> PostImagemArquivo(Imagem imagem, IFormFile imgFile)
-        {
-            
-        }*/
-
         // POST: api/Imagems
         [HttpPost("PostImagem")]
         public async Task<ActionResult<Imagem>> PostImagem(Imagem imagem)
@@ -99,7 +91,8 @@ namespace ScreamAPI.Controllers
                 return NotFound();
             }
 
-            _context.Imagens.Remove(imagem);
+            imagem.ExclusaoImagem = true;
+            _context.Update(imagem);
             await _context.SaveChangesAsync();
 
             return imagem;
