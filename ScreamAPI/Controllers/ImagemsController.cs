@@ -21,14 +21,14 @@ namespace ScreamAPI.Controllers
         }
 
         // GET: api/Imagems
-        [HttpGet("api/GetImagens")]
+        [HttpGet("GetImagens")]
         public async Task<ActionResult<IEnumerable<Imagem>>> GetImagens()
         {
             return await _context.Imagens.ToListAsync();
         }
 
         // GET: api/Imagems/5
-        [HttpGet("api/GetImagem/{id}")]
+        [HttpGet("GetImagem/{id}")]
         public async Task<ActionResult<Imagem>> GetImagem(int id)
         {
             var imagem = await _context.Imagens.FindAsync(id);
@@ -44,7 +44,7 @@ namespace ScreamAPI.Controllers
         // PUT: api/Imagems/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("api/PutImagem/{id}")]
+        [HttpPut("PutImagem/{id}")]
         public async Task<IActionResult> PutImagem(int id, Imagem imagem)
         {
             if (id != imagem.IdImagem)
@@ -80,7 +80,7 @@ namespace ScreamAPI.Controllers
         }*/
 
         // POST: api/Imagems
-        [HttpPost("api/PostImagem")]
+        [HttpPost("PostImagem")]
         public async Task<ActionResult<Imagem>> PostImagem(Imagem imagem)
         {
             _context.Imagens.Add(imagem);
@@ -90,7 +90,7 @@ namespace ScreamAPI.Controllers
         }
 
         // DELETE: api/Imagems/5
-        [HttpDelete("api/DeleteImagem/{id}")]
+        [HttpDelete("DeleteImagem/{id}")]
         public async Task<ActionResult<Imagem>> DeleteImagem(int id)
         {
             var imagem = await _context.Imagens.FindAsync(id);
