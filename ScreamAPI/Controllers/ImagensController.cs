@@ -11,11 +11,11 @@ namespace ScreamAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ImagemsController : ControllerBase
+    public class ImagensController : ControllerBase
     {
         private readonly ScreenContext _context;
 
-        public ImagemsController(ScreenContext context)
+        public ImagensController(ScreenContext context)
         {
             _context = context;
         }
